@@ -1,0 +1,138 @@
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 210 50% 98%;
+    --foreground: 222 47% 11%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 222 47% 11%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 222 47% 11%;
+
+    --primary: 199 89% 48%;
+    --primary-foreground: 0 0% 98%;
+
+    --secondary: 199 89% 96%;
+    --secondary-foreground: 222 47% 11%;
+
+    --muted: 210 40% 96.1%;
+    --muted-foreground: 215 16% 47%;
+
+    --accent: 199 89% 94%;
+    --accent-foreground: 222 47% 11%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+
+    --border: 214.3 31.8% 91.4%;
+    --input: 214.3 31.8% 91.4%;
+    --ring: 199 89% 48%;
+
+    --radius: 0.85rem;
+
+    --sidebar-background: 210 50% 98%;
+    --sidebar-foreground: 222 47% 11%;
+    --sidebar-primary: 222 47% 11%;
+    --sidebar-primary-foreground: 0 0% 98%;
+    --sidebar-accent: 199 89% 94%;
+    --sidebar-accent-foreground: 222 47% 11%;
+    --sidebar-border: 214.3 31.8% 91.4%;
+    --sidebar-ring: 199 89% 48%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground antialiased;
+    font-feature-settings: "rlig" 1, "calt" 1;
+  }
+}
+
+.glass-card {
+  background: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 8px 32px rgba(31, 38, 135, 0.1);
+}
+
+.text-gradient {
+  background: linear-gradient(to right, #33c3f0, #2dd4bf);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.transition-all-smooth {
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Simulation canvas styles */
+.canvas-container {
+  position: relative;
+  overflow: hidden;
+  border-radius: var(--radius);
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+}
+
+/* Specific animation classes */
+.hover-lift {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.hover-lift:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.12);
+}
+
+/* Gradual load animation for content */
+.stagger-load > * {
+  opacity: 0;
+  transform: translateY(10px);
+  animation: staggerFade 0.5s ease forwards;
+}
+
+@keyframes staggerFade {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.stagger-load > *:nth-child(1) { animation-delay: 0.1s; }
+.stagger-load > *:nth-child(2) { animation-delay: 0.2s; }
+.stagger-load > *:nth-child(3) { animation-delay: 0.3s; }
+.stagger-load > *:nth-child(4) { animation-delay: 0.4s; }
+.stagger-load > *:nth-child(5) { animation-delay: 0.5s; }
+.stagger-load > *:nth-child(6) { animation-delay: 0.6s; }
+
+.blue-gradient-bg {
+  background: linear-gradient(to bottom right, #e7f5ff, #f0f9ff);
+}
+
+.soft-shadow {
+  box-shadow: 0 4px 20px rgba(51, 195, 240, 0.1);
+}
+
+.card-highlight {
+  border-left: 3px solid hsl(var(--primary));
+}
+
+.pill-badge {
+  @apply px-2 py-1 rounded-full text-xs font-medium bg-secondary text-secondary-foreground;
+}
+
+.nav-item {
+  @apply px-3 py-2 rounded-lg transition-colors hover:bg-secondary;
+}
+
+.nav-item.active {
+  @apply bg-secondary text-primary font-medium;
+}
